@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Container Service Introduction | Microsoft Azure"
-   description="Azure Container Service (ACS) provides a way to simplify the creation, configuration, and management of a cluster of virtual machines that are preconfigured to run containerized applications."
+   pageTitle="Introdução ao Azure Container Service | Microsoft Azure"
+   description="Azure Container Service (ACS) fornece um meio de simplificar a criação, configuração e gerenciamento de um cluster de máquinas virtuais que estão pré-configuradas para executar aplicações conteinerizadas."
    services="container-service"
    documentationCenter=""
    authors="rgardler"
@@ -18,118 +18,109 @@
    ms.date="02/16/2016"
    ms.author="rogardle"/>
 
-# Azure Container Service introduction
+# Introdução ao Azure Container Service
 
-Azure Container Service (ACS) provides a way to simplify the creation,
-configuration, and management of a cluster of virtual machines that are
-preconfigured to run containerized applications. Using an optimized
-configuration of popular open-source scheduling and orchestration tools,
-ACS enables you to use your existing skills or draw upon a large and
-growing body of community expertise to deploy and manage container-based
-applications on Microsoft Azure.
+Azure Container Service (ACS) fornece um meio de simplificar a criação, configuração e gerenciamento de um cluster de máquinas virtuais que estão pré-configuradas para executar aplicações containerizadas. Usando uma configuração otimizada de uma popular ferramenta open-source de agendamento e orquestração, ACS habilita você a usar suas habilidades ou basear-se em conhecimentos de uma crescente comunidade para publicar e gerenciar aplicações baseadas em containers no Microsoft Azure.
 
 <br />
-![ACS provides a means to manage containerize applications on multiple hosts on Azure.](./media/acs-intro/acs-cluster.png)
+![ACS fornece um meio de gerenciar aplicações em containers em vários tipos de hospedagem no Azure.](./media/acs-intro/acs-cluster.png)
 <br /><br />
 
-ACS leverages Docker to ensure that your application containers are
-fully portable. It also supports your choice of Marathon, Chronos and
-Apache Mesos or Docker Swarm to ensure that these applications can be
-scaled to thousands, even tens of thousands of containers.
+ACS aproveita o Docker para garantir que os containers da sua aplicação são totalmente portáveis. Ele também suporta sua escolha entre Marathon, Chronos e Apache Mesos ou Docker Swarm para garantir que essas aplicações podem escalar para milhares, ou até mesmo centenas de milhares de containers.
 
-The Azure Container Service enables you to take advantage of the
-enterprise grade features of Azure while still maintaining application
-portability, including at the orchestration layers.
+O Azure Container Service permite que você a tire vantagem 
+dos recursos corporativos do Azure mantendo aplicação, portabilidade, 
+inclusive nas camadas de orquestração.
 
-Using Azure Container Service
+Utilizando o Azure Container Service
 -----------------------------
 
-Our goal with the Azure Container Service is to provide a container
-hosting environment, using open source tools and technologies, which are
-popular among our customers today. To this end, we expose the standard
-API endpoints for Docker and your chosen orchestrator. Using these
-endpoints you can leverage any software that is capable of talking to
-those endpoints. For example, in the case of the Docker Swarm endpoint
-you might choose to use Docker Compose, while for Apache Mesos you may
-choose to use the DCOS CLI.
+Nosso objetivo com o Azure Container Service é fornecer um ambiente 
+para hospedagem de containers, usando ferramentas e tecnologias 
+open sourse, que são populares aos clientes hoje em dia. 
+Para isto, nós expomos os endpoints padrões das API's
+para o Docker e o orquestrador de sua escolha. 
+Usando estes endpoints você pode utilizar qualquer software que seja capaz
+de falar com estes endpoints. Por exemplo, no caso do endpoint do Docker 
+Swarm você pode usar Docker Compose, enquanto para Apache Mesos você pode
+escolher utilizar o CLI DCOS.
 
-Creating a Docker Cluster Using Azure Container Service
+Criando um cluster Docker usando Azure Container Service
 -------------------------------------------------------
 
-To begin using Azure Container Service, an ACS cluster will be deployed using an Azure Resource Manager template. This deployment can be configured with different size and availability options, and will be configured with either Apache Mesos Mesos or Docker Swarm. Azure Resource Manager Templates can be deployed through the Azure port, using the Azure CLI, or with PowerShell. The templates can also be modified to include additional or advanced Azure configuration. For more information on deploying and ACS cluster, see [Deploy an Azure container Service Cluster](./container-service-deployment.md).
+Para começar a utilizar o Azure Container Sercice, um cluster ACS será publicado usando um template Azure Resource Manager. Este deployment pode ser configurado com diferentes tamanhos e opções de disponibilidade, e será configurado com Apache Mesos ou Docker Swarm.
+Templates do Azure Resource Manager podem ser publicados através de portas do Azure, usando CLI do Azure, ou PowerShell. Os templates também podem ser alterados para incluir configurações avançadas ou adicionais. Para mais informações sobre publicações de cluster ACS, veja [Publicando um cluster no Azure Container Service](./container-service-deployment.md).
 
-Deploying an Application
+Publicando uma aplicação
 ------------------------
 
-During preview we provide a choice of either Docker Swarm or Apache
-Mesos (with DCOS Marathon and DCOS Chronos frameworks)
-for orchestration. 
+Durante a avaliação nós fornecemos uma escolha de Docker Swarm ou
+Apache Mesos (com DCOS Marathon e frameworks DCOS Chronos) para orquestração. 
 
-### Using Apache Mesos
+### Usando o Apache Mesos
 
-Apache Mesos is an open source project housed at the Apache Software
-Foundation. It lists some of the [biggest names in
-IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/) as
-users and contributors.
+Apache Mesos é um projeto open source hospedado na Apache Software 
+Foundation. Ela lista alguns do maiores nomes (http://mesos.apache.org/documentation/latest/powered-by-mesos/) 
+como usuários e colaboradores.
 
-![ACS configured for Swarm showing agents and masters.](media/acs-intro/acs-mesos.png)
+![ACS configurado para Swarm exibindo agentes e mestres.](media/acs-intro/acs-mesos.png)
 
-Mesos packs an impressive features set.
+Mesos empacota um conjunto impressionante de características.
 
--   Scalability to 10,000s of nodes
+-   Escalabilidade para 10.000 nós
 
--   Fault-tolerant replicated master and slaves using ZooKeeper
+-   Tolerância à falhas replicadas em master e slaves usando ZooKeeper
 
--   Support for Docker containers
+-   Suporte para containers Docker
 
--   Native isolation between tasks with Linux Containers
+-   Isolamento nativo entre tarefas com containers Linux
 
--   Multi-resource scheduling (memory, CPU, disk, and ports)
+-   Agendamento multi recurso (memória, CPU, disco, e portas)
 
--   Java, Python and C++ APIs for developing new parallel applications
+-   APIs em Java, Python e C++ para desenvolvimento de novas aplicações paralelas
 
--   Web UI for viewing cluster state
+-   Interface de Usuário Web para visualização do estado do cluster
 
-Mesos has support for a large number of
+Mesos possui suporte a um vasto número de 
 [frameworks](http://mesos.apache.org/documentation/latest/frameworks/)
-that can be used for scheduling workloads on the Azure Container
-Service. By default, ACS includes the Marathon and Chronos frameworks.
+que podem ser usados para agendar processamento no Azure Container
+Service. Por padrão, ACS inclui frameworks Marathon e Chronos.
 
-#### Using Marathon and Chronos
+#### Usando Marathon e Chronos
 
-Marathon is a cluster-wide init and control system for services in
-cgroups or, in the case of ACS, Docker containers. It is an ideal
-partner to Chronos, a fault tolerant job scheduler for Mesos which
-handles dependencies and time based schedules.
+Marathon é um cluster de inicialização e controle de sistema para
+serviços e cgroups ou, no caso do ACS, containers Docker. Ele um parceiro
+ideal ao Chronos, um agendador de tarefas com tolerância à falhas para Mesos
+que controla dependências e agendamentos de horários.
 
-Marathon and Chronos provide a Web UI from which you can deploy your
-applications. You will access this at an URL that looks something like
-`http://DNS\_PREFIX.REGION.cloudapp.azure.com`
-where DNS\_PREFIX and REGION are both defined at deployment time. Of
-course, you can also provide your own DNS name. For more information on running a container using the Marathon web UI, see [Container management through the web UI](./container-service-mesos-marathon-ui.md).
+Marathon e Chrones fornecem uma interface Web para você publicar suas
+aplicações. Você pode acessá-lo usando uma URL parecida com
+`http://PREFIXO\_DNS.REGIAO.cloudapp.azure.com`
+onde PREFIXO\_DNS e REGIAO são ambos definidos em tempo de publicação. 
+Naturalmente, você também pode fornecer seu próprio nome DNS. Para mais informações sobre executar um container usando a interface web Marathon, veja [Gerenciamento de container utilizando interface web](./container-service-mesos-marathon-ui.md).
 
-You can also use the REST APIs for communicating with Marathon and
-Chronos. There are a number of client libraries available for each tool,
-covering a variety of languages and, of course, you can use the HTTP
-protocol in any language. In addition, many popular DevOps tools provide
-support for these schedulers. This provides maximum flexibility for your
-operations team when working with an ACS cluster. For more information on running a container using the Marathon REST API, see [Container management with the REST API](./container-service-mesos-marathon-rest.md).
+Você também pode usar APIs REST para se comunicar com Marathon e Chronos.
+Existem diversas bibliotecas clientes disponíveis para cada ferramenta,
+cobriando uma variedade de linguagens e, naturalmente, você pode usar o 
+protocolo HTTP em qualquer linguagem. Além disso, diversas ferramentas 
+DevOps fornecem suporte para estes agendadores. Isso fornece maior
+flexibilidade para seu time de operações ao trabalhar com um cluster ACS.
+Para mais informações sobre executar um container usando REST API do Marathon, veja [Gerenciamento de Container com REST API](./container-service-mesos-marathon-rest.md).
 
-### Using Docker Swarm
+### Usando Docker Swarm
 
-Docker Swarm provides native clustering for Docker. Because Docker Swarm
-serves the standard Docker API, any tool that already communicates with
-a Docker daemon can use Swarm to transparently scale to multiple hosts
-on Azure Container Service. 
+Docker Swarm fornece clusterização nativa para Docker. Como Docker Swarm
+serve a API Docker padrão, qualquer ferramenta que já se comunica com
+um daemon Docker pode usar Swarm para dimensionar de forma transparente para vários hosts
+no Azure Container Service.
 
-![ACS configured to use Apache Mesos, showing jumpbox, agents and masters.](media/acs-intro/acs-swarm.png)
+![ACS configurado para usar Apache Mesos, exibindo jumpbox, agentes e masters.](media/acs-intro/acs-swarm.png)
 
-Supported tools for managing containers on a Swarm cluster include, but are not limited
-to, the following:
+Ferramentas suportadas para gerenciar containers em um cluester Swarm incluem, mas não estão limitadas, às seguintes:
 
 -   Dokku
 
--   Docker CLI and Docker Compose
+-   Docker CLI e Docker Compose
 
 -   Krane
 
@@ -137,10 +128,10 @@ to, the following:
 
 Videos
 ------
-AzureCon Announcement:
+Anúncio AzureCon:
 
 > [AZURE.VIDEO azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]  
 
-Getting Started with ACS:  
+Começando com ACS:  
 
 > [AZURE.VIDEO connect-2015-getting-started-developing-with-docker-and-azure-container-service]
